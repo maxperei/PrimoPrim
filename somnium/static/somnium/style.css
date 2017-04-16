@@ -1,0 +1,9 @@
+body {
+    font-family: monospace;
+    background: #e2cecf url("images/background.jpg") no-repeat 50% 0;
+    background-size: contain;
+}
+
+li a {
+    color: #455865;
+}

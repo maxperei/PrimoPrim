@@ -1,0 +1,9 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'somnium/style.css' %}" />
+
+<ul>
+    {% for artist in artists_list %}
+        <li><a href="#">{{ artist.name }}</a></li>
+    {% endfor %}
+</ul>
