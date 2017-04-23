@@ -11,5 +11,7 @@ ___
 
 ___
 
-`mongod --dbpath /usr/local/mongodb/data/db/`
-`python manage.py runserver`
+```
+mongod --dbpath /usr/local/mongodb/data/db/ 
+python manage.py runserver
+```
