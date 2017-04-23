@@ -4,6 +4,6 @@
 
 <ul>
     {% for artist in artists_list %}
-        <li><a href="#">{{ artist.name }}</a></li>
+        <li><a href="#" data-id="{{ artist.id }}">{{ artist.name }}, <em>{{ artist.location }}</em></a></li>
     {% endfor %}
 </ul>

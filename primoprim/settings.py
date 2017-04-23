@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import sys
-import mongoengine
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -27,6 +25,12 @@ SECRET_KEY = 'f1s4gad*)&glzg!bqv5^lt@36p&kuf+p_^36kv=x_$hov%y1)u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+ADMINS = (
+    ('Max Perei', 'hello@maxperei.info'),
+)
+
+MANAGERS = ADMINS
 
 ALLOWED_HOSTS = ['127.0.0.1', 'local.dev', 'localhost']
 
@@ -47,6 +51,12 @@ INSTALLED_APPS = [
 
     'somnium.apps.SomniumConfig',
 ]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'primoprim.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -98,17 +107,19 @@ MONGODB_DATABASES = {
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.dummy'
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.dummy'
     }
 }
 
-# AUTHENTICATION_BACKENDS = (
-#     'mongoengine.django.auth.MongoEngineBackend',
-# )
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
 
-#SESSION_ENGINE = 'mongoengine.django.sessions'
+AUTHENTICATION_BACKENDS = (
+  'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+)
+
+SESSION_ENGINE = 'django_mongoengine.sessions'
+
+SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

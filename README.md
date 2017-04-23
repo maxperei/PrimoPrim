@@ -8,3 +8,8 @@ ___
 - Django 1.9.1
 - PyMongo 3.4.0
 - MongoEngine 0.12.0
+
+___
+
+`mongod --dbpath /usr/local/mongodb/data/db/`
+`python manage.py runserver`

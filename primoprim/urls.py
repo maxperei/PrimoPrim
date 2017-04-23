@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django_mongoengine import mongo_admin
+
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^', include('somnium.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', mongo_admin.site.urls),
 ]
